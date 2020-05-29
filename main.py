@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# gf, in Python 3
+# gf, in python 3
 
 # Grep wrapper based on "gf" by Tom Hudson (https://github.com/tomnomnom)
 # Basically a Python 3 port of his Go program because I could not get it working
@@ -15,7 +15,7 @@ def get_pattern_dir():
     """
 
     user_home = os.getenv( 'HOME' )
-    base_dir = '.gf/examples' # Change to location of the examples directory
+    base_dir = '.gf/examples' # Change me to location of the examples directory
     pattern_dir = os.path.join( user_home, base_dir )
 
     return pattern_dir
@@ -72,13 +72,10 @@ def main():
                          dest='files' )
     args = parser.parse_args()
     if args.mode[ 0 ] == 'list':
-        patterns_list = get_all_patterns()
-        for patterns in patterns_list:
-            if isinstance( patterns, list ):
-                for pattern in patterns:
-                    print( pattern )
-            else:
-                print( patterns )
+        pattern_dir = get_pattern_dir()
+        patterns = os.listdir( pattern_dir )
+        for pattern in patterns:
+            print( pattern[ :-5 ])
     if args.mode[ 0 ] == 'dump':
         flags, pattern = get_flags_pattern( args.pattern[ 0 ])
         print( 'grep ' + flags + ' "' + '|'.join( map( str, pattern )) + '" ' + ' '.join( map( str, args.files )))

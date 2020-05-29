@@ -27,4 +27,4 @@ optional arguments:
                         grep in this folder or file
                         
 # Additional
-This is one of my first programs so any additional help or advice would be greatly appreciated. Thank you in advance.
+This is one of my first programs so any additional help or advice with the code operation or really anything would be greatly appreciated. Thank you in advance.

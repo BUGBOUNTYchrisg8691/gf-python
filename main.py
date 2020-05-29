@@ -15,7 +15,7 @@ def get_pattern_dir():
     """
 
     user_home = os.getenv( 'HOME' )
-    base_dir = '.gf/examples' # Change me to location of the examples directory
+    base_dir = '.gf/examples' # Change to location of the examples directory
     pattern_dir = os.path.join( user_home, base_dir )
 
     return pattern_dir

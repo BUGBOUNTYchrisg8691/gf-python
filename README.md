@@ -8,6 +8,7 @@ Port of Tom Hudson's gf, wrapper for grep, in Python, because I could not get th
   - Or put it wherever you would like and make sure you change the "base_dir" variable of the "get_pattern_dir" function in     main.py to the location of the examples directory.
 - Add file execution to path however you prefer.
   - I usually add the line 'alias gf="python3 <path/to/main.py>"' to my .bash_aliases file.
+  - Open terminal and execute 'source ~/.bashrc'
 - ... and you are good to go.
 
 # Usage

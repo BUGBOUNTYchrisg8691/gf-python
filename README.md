@@ -31,4 +31,4 @@ optional arguments:
 This is one of my first programs so any additional help or advice with the code operation or really anything would be greatly appreciated. Thank you in advance.
 
 May 29, 2020
-The "urls" functionality is broken. I'll be fixing it today, as well as discovering what other functionality might be broken as well. Probably should've tested it a bit more thoroughly.
+The "urls" functionality is broken. At least, I believe it is. Regardless, I'll be fixing it today, as well as discovering what other functionality might be broken as well. Probably should've tested it a bit more thoroughly, and not been so overly excited to rush to commit it.

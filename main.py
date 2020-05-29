@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# gf, in python 3
+# gf, in Python 3
 
 # Grep wrapper based on "gf" by Tom Hudson (https://github.com/tomnomnom)
 # Basically a Python 3 port of his Go program because I could not get it working

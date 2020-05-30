@@ -78,15 +78,32 @@ def main():
             print( pattern[ :-5 ])
     if args.mode[ 0 ] == 'dump':
         flags, pattern = get_flags_pattern( args.pattern[ 0 ])
-        print( 'grep ' + flags + ' "' + '|'.join( map( str, pattern )) + '" ' + ' '.join( map( str, args.files )))
+        if isinstance( pattern, str):
+            command = 'grep ' + flags + ' "' + pattern + '"'
+            print( command )
+        else:
+            command = 'grep ' + flags + ' "' + '|'.join(map(str, pattern)) + '"'
+            print( command )
     if args.mode[ 0 ] == 'op':
         flags, pattern = get_flags_pattern( args.pattern[ 0 ])
-        process = subprocess.run([ 'grep', flags, '|'.join( map( str, pattern )),
-                                 ' '.join( map( str, args.files ))],
-                                 stdout=subprocess.PIPE, stderr=subprocess.STDOUT )
-        output = process.stdout.splitlines()
-        for line in output:
-            print( line.decode())
+        print( pattern[ 0 ])
+        print( pattern[ -1 ])
+        if isinstance( pattern, str ):
+            if pattern[ 0 ] == '"' or pattern[ -1 ] == '"':
+                pattern = f"'{pattern}'"
+            else:
+                pattern = f'"{pattern}"'
+            files = ' '.join( map( str, args.files ))
+            command = 'grep ' + flags + ' ' + pattern + ' ' + files
+        else:
+            if pattern[ 0 ][ 0 ] == '"' or pattern[ -1 ][ -1 ] == '"':
+                pattern = "'" + '|'.join( map( str, pattern )) + "'"
+            else:
+                pattern = '"' + '|'.join( map( str, pattern )) + '"'
+            files = ' '.join( map( str, args.files ))
+            command = 'grep ' + flags + ' ' + pattern + ' ' + files
+
+        os.system( command )
 
 if __name__ == '__main__':
 

@@ -89,17 +89,22 @@ def main():
     if args.mode[ 0 ] == 'op':
         flags, pattern = get_flags_pattern( args.pattern[ 0 ])
         if isinstance( pattern, str ):
-            if bisect_left( ( sorted( pattern ), '"' ):
+            if bisect_left( sorted( pattern ), '"' ):
                 pattern = f"'{pattern}'"
             else:
                 pattern = f'"{pattern}"'
             files = ' '.join( map( str, args.files ))
             command = 'grep ' + flags + ' ' + pattern + ' ' + files
         else:
-            if pattern[ 0 ][ 0 ] == '"' or pattern[ -1 ][ -1 ] == '"':
-                pattern = "'" + '|'.join( map( str, pattern )) + "'"
-            else:
-                pattern = '"' + '|'.join( map( str, pattern )) + '"'
+            patterns = []
+            for pat in pattern:
+                if bisect_left( sorted( pat ), '"' ):
+                    pat = f"'{pat}'"
+                    patterns.append( pat )
+                else:
+                    pat = f'"{pat}"'
+                    patterns.append( pat )
+            pattern = '|'.join( map( str, pattern ))
             files = ' '.join( map( str, args.files ))
             command = 'grep ' + flags + ' ' + pattern + ' ' + files
 

@@ -6,9 +6,11 @@
 # Basically a Python 3 port of his Go program because I could not get it working
 
 import argparse
+from bisect import bisect_left
 import json
 import os
-import subprocess
+import sys
+# import subprocess
 
 def get_pattern_dir():
     """ Returns location of flag/pattern json files.
@@ -73,9 +75,9 @@ def main():
     args = parser.parse_args()
     if args.mode[ 0 ] == 'list':
         pattern_dir = get_pattern_dir()
-        patterns = os.listdir( pattern_dir )
+        patterns = os.listdir(pattern_dir)
         for pattern in patterns:
-            print( pattern[ :-5 ])
+            print(pattern[:-5])
     if args.mode[ 0 ] == 'dump':
         flags, pattern = get_flags_pattern( args.pattern[ 0 ])
         if isinstance( pattern, str):
@@ -86,10 +88,8 @@ def main():
             print( command )
     if args.mode[ 0 ] == 'op':
         flags, pattern = get_flags_pattern( args.pattern[ 0 ])
-        print( pattern[ 0 ])
-        print( pattern[ -1 ])
         if isinstance( pattern, str ):
-            if pattern[ 0 ] == '"' or pattern[ -1 ] == '"':
+            if bisect_left( ( sorted( pattern ), '"' ):
                 pattern = f"'{pattern}'"
             else:
                 pattern = f'"{pattern}"'

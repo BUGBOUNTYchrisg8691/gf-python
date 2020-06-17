@@ -1,4 +1,6 @@
 {
     "flags": "-HnriE",
-    "pattern": "Access-Control-Allow"
+    "patterns": [
+        "Access-Control-Allow"
+    ]
 }

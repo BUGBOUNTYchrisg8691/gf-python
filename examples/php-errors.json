@@ -8,9 +8,9 @@
         "include_path",
         "undefined index",
         "undefined variable",
-        "\\?php",
-        "<\\?[^x]",
-        "stack trace\\:",
+        "\\\\?php",
+        "<\\\\?[^x]",
+        "stack trace\\\\:",
         "expects parameter [0-9]*",
         "Debug Trace"
     ]

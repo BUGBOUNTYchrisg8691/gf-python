@@ -1,4 +1,4 @@
 {
   "flags": "-HnriE",
-  "pattern": "func [a-z0-9_]+\\("
+  "pattern": "func [a-z0-9_]+\\\\("
 }
